@@ -1,104 +1,31 @@
-// ***********************************************************
-// * Variables
-// ***********************************************************
+// const anchor = document.querySelector('a')!;
 
-//Will alwys be a sring
-let character = 'mario';
-//Will always be a number
-let number = 3;
+//Will warn you that the object is possibly null
+//console.log(anchor.href);
 
-//Any type  -- kinda reverts ts to js - so use with caution
-let currentAge: any = 25;
-currentAge = 'old';
+//This will work
+// if (anchor) {
+//     console.log(anchor.href);
+// }
 
-//Explicit types
+//If we are ceratin that the variabel has a value, we can add on a ! after the query selector
+//Then this works
+//onsole.log(anchor.href);
 
-let title: string;
-let age: number;
-let isLoggedIn: boolean;
-let mixedString: string|number;
+//Use typecasting to tell TS what type of element we are refering to in the DOM
+//Else it says element or null when you hover over the form variabel
+const form = document.querySelector('.new-item-form') as HTMLFormElement;
 
-// ***********************************************************
-// * Functions
-// ***********************************************************
+//inputs
+//Select element
+const type = document.querySelector('#type') as HTMLSelectElement;
+const tofrom = document.querySelector('#tofrom') as HTMLInputElement;
+const details = document.querySelector('#details') as HTMLInputElement;
+const amount = document.querySelector('#amount') as HTMLSelectElement;
 
-const circle = (diameter: number) => {
-    return diameter * Math.PI;
-}
+form.addEventListener('submit', (e:Event) => {
+    e.preventDefault();
 
-console.log(circle(32));
-
-//Greet should be a function - notice capitalized first letter
-let greet: Function;
-
-//Optional parameters - notice the question mark after the c
-// You can also add a default value to c by adding "= 10". then the question mark should be removed
-
-const add  = (a: number, b: number, c?: number | string) => {
-    console.log(a + b);
-    console.log(c);   
-}
-
-add(5, 10, 20)
-
-//The colon after the parameters explicitly tells what the return type should be. Not necessery in this case. can be used to give info to other developers.
-const minus = (a: number, b: number): number => {
-    return a + b;
-}
-
-//Result will inherit the type from the return value in the function, ergo number
-let result = minus(10, 7);
-
-//************************************************************ 
-// * Arrays
-// ***********************************************************
-
-//Can only add strings to this array
-let names = ['luigi', 'mario', 'yoshi'];
-
-//An empty array of strings that is initialized
-let ninjas: string[] = [];
-
-//Mixed array
-let mixed = ['ken', 4, true];
-let mixedAgain: (string|number|boolean)[] = [];
-let mixedArray: any[] = [];
-
-// ***********************************************************
-// * Objects
-// ***********************************************************
-
-//Cant change the properties, name always has to be a string and age always have to be a number
-let ninja = {
-    name: 'mario',
-    belt: 'black',
-    age: 30
-}
-
-let ninjaOne: object;
-
-//More specific
-let ninjaTwo: {
-    name: string,
-    age: number,
-    beltColor: string
-}
-
-
-// *************************************************************
-// * Type Aliases
-// *************************************************************
-
-//Defining types that can be used many times
-
-type StringOrNum = string | number;
-type objWithName = {name: string, uid: StringOrNum}
-
-const logDetails = (uid: StringOrNum) => {
-    console.log(uid);
-};
-
-const greeting = (user: objWithName) => {
-    console.log(`${user.name} says hello`);
+    console.log(type.value, tofrom.value, details.value, amount.value);
     
-};
+})
