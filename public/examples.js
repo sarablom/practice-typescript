@@ -89,3 +89,61 @@ const logDetails = (uid) => {
 const greeting = (user) => {
     console.log(`${user.name} says hello`);
 };
+// *************************************************************
+// * Generics
+// *************************************************************
+// Create a reusable chunk of code that can be reused with different types
+const addUID = (obj) => {
+    let uid = Math.floor(Math.random() * 100);
+    return Object.assign(Object.assign({}, obj), { uid });
+};
+//   const docThree: Resource<object> = {
+//     uid: 1, 
+//     resourceName: 'person', 
+//     data: { name: 'shaun' }
+//   };
+//   const docFour: Resource<string[]> = {
+//     uid: 1, 
+//     resourceName: 'shoppingList', 
+//     data: ['bread', 'milk']
+//   };
+//   console.log(docThree, docFour);
+// *************************************************************
+// * Enums
+// *************************************************************
+//Allows us to store a set of constants or key words and associate them with a numeric value
+// Example ResourceType.BOOK
+var ResourceType;
+(function (ResourceType) {
+    ResourceType[ResourceType["BOOK"] = 0] = "BOOK";
+    ResourceType[ResourceType["AUTHOR"] = 1] = "AUTHOR";
+    ResourceType[ResourceType["FILM"] = 2] = "FILM";
+    ResourceType[ResourceType["DIRECTOR"] = 3] = "DIRECTOR";
+})(ResourceType || (ResourceType = {}));
+;
+// const docOne: Resource<object> = {
+//   uid: 1,
+//   resourceType: ResourceType.BOOK,
+//   data: { title: 'name of the wind' }
+// }
+// const docTwo: Resource<object> = {
+//   uid: 10,
+//   resourceType: ResourceType.DIRECTOR,
+//   data: { title: 'name of the wind' }
+// }
+// console.log(docOne);
+// console.log(docTwo);
+// *************************************************************
+// * Tuples
+// *************************************************************
+// Cannot change type in array on specific position
+let arr = ['ryu', 25, true];
+arr[0] = false;
+arr[1] = 'yoshi';
+arr = [30, false, 'yoshi'];
+let tuple = ['ryu', 25, true];
+// tup[0] = false;
+tuple[0] = 'ken';
+let student;
+//student = [23564, 'chun-li'];
+student = ['chun-li', 23564];
