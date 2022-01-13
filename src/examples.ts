@@ -2,6 +2,8 @@
 // * Variables
 // ***********************************************************
 
+//Implicit types
+
 //Will alwys be a sring
 let character = 'mario';
 //Will always be a number
@@ -16,6 +18,7 @@ currentAge = 'old';
 let title: string;
 let age: number;
 let isLoggedIn: boolean;
+//Union - either a string or a number
 let mixedString: string|number;
 
 // ***********************************************************
@@ -118,6 +121,19 @@ let ninjaTwo: {
     beltColor: string
 }
 
+//Interfaces
+//Inforce a certain kind of structure inside classes or objects
+
+interface DinosaurData {
+    dinosaur: string;
+    horns: number;
+}
+
+let obj: DinosaurData = {
+    dinosaur: 'triceratops',
+    horns: 3
+}
+
 
 // *************************************************************
 // * Type Aliases
@@ -205,6 +221,8 @@ interface Resource<T> {
 // * Tuples
 // *************************************************************
 
+//An array that has a certain number of elements
+
 // Cannot change type in array on specific position
 
 let arr = ['ryu', 25, true];
@@ -219,3 +237,9 @@ tuple[0] = 'ken';
 let student: [string, number];
 //student = [23564, 'chun-li'];
 student = ['chun-li', 23564];
+
+// *************************************************************
+// * Never
+// *************************************************************
+
+//Values that can never happend
